@@ -58,22 +58,41 @@
 
     // Fonction principale
     function main(){
+        // pour le temps de calcul du programme, à retirer
+        $start = microtime(true);
         // tirage
         $draw = "MANGER";
         // nombre de jockers
         $nbJoker = 2;
 
+        echo "<h1>Scrabble Script</h1>";
+
         // tableau des anagrammes trouvés
         $res = anagramAlgo($draw, $nbJoker);
 
-        echo "Nombre de mot(s) trouvé(s) : ";
-        print_r(count($res));
-        echo "\n -> ";
+        echo "<h2>Tirage : ";
+        echo $draw;
+        echo "</h2>";
+        echo "<h2>Nombre de jokers : ";
+        echo $nbJoker;
+        echo "</h2>";
 
+        echo "<h3>Nombre de mot(s) trouvé(s) : ";
+        print_r(count($res));
+        echo "</h3>";
+        
+        // Affiche le temps de calcul du programme
+        echo "<h3>Temp de calcul : ";
+        echo round($time_elapsed_secs = microtime(true) - $start, 2);
+        echo " secondes.</h3>";
+
+        echo "<ul>";
         foreach($res as $word){
+            echo "<li>";
             echo $word;
-            echo "\n";
+            echo "</li>";
         }
+        echo "</ul>";
     }
     
 
